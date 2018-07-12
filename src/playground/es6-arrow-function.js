@@ -21,3 +21,13 @@ document.write("<p></p>")
 const squareArrow2 = (x) => Array.from(Array(x).keys())
 
 document.write(squareArrow2(50))
+
+//--------------------------
+document.write("<p></p>")
+//si la funcion solo regresa un valor entonces podemos hacerlo en una
+//sola linea
+const getFirstName = (fullName) => fullName.split(" ")[0]
+
+document.write(getFirstName("Eduardo Rasgado Ruiz"))
+
+//----------------------------------------------------------------
