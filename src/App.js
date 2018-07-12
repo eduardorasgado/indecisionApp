@@ -43,12 +43,11 @@ function getCity(){
 	return state.ciudad != "" ? cityIs() : <h3>"Ciudad Desconocida"</h3>
 }
 
-//-----------------------CONST Y LET
-
+//-----------------------
 
 //-------------
 //define una variable jsx que es un parrafo, pero no se exporta solo
-var template = (
+const template = (
 				<div>
 					<h1>Esto es codigo JSX y no html, esto va a cambiar en el background </h1>
 					<p>oye!</p>
@@ -61,7 +60,7 @@ var template = (
 				</div>
 			);
 
-var templateTwo = 
+const templateTwo = 
 	(
 		<div>
 		{/*acakocnapskca*/}
@@ -78,7 +77,7 @@ var templateTwo =
 	);
 
 //mandamos a buscar el div con el id = app
-var appRoot = document.getElementById('app')
+const appRoot = document.getElementById('app')
 
 //objecto de ReactDOM que va a llevar nuestros parrafo al index.html
 ReactDOM.render(templateTwo, appRoot)

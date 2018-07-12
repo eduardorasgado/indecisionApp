@@ -1,91 +1,27 @@
 "use strict";
 
-document.write("hello");
+var square = function square(x) {
+	return x * x;
+};
 
+var squareNumber = square(2);
+document.write(squareNumber);
+
+//--------------------------ES6
 document.write("<p></p>");
 
-var nameVar = "Eduardo";
-nameVar = "Rasgado";
-document.write(nameVar);
+var squareArrow = function squareArrow(x) {
+	return x * x;
+};
 
+document.write(squareArrow(2));
+
+//--------------------------
 document.write("<p></p>");
+//si la funcion solo regresa un valor entonces podemos hacerlo en una
+//sola linea
+var squareArrow2 = function squareArrow2(x) {
+	return Array.from(Array(x).keys());
+};
 
-//no podemos repetir la constante pero si renombrarla
-var nameLet = "Lalo";
-nameLet = ":P";
-document.write(nameLet);
-
-document.write("<p></p>");
-
-//no podemos ni renombrarla ni repetirla
-var nameConst = "Frank";
-document.write(nameConst);
-
-document.write("<p></p>");
-
-//desde una funcion VAR------------------------------------------------
-function getPetName() {
-	var petName = "Braulio";
-	return petName;
-}
-var petName = getPetName();
-document.write(petName);
-
-document.write("<p></p>");
-
-//desde una funcion CONST
-function getPetName2() {
-	var petName = "Fide";
-	return petName;
-}
-var petName2 = getPetName2();
-document.write(petName2);
-
-//----------------------------------------------------------------
-
-var fullName = "Eduardo Rasgado Ruiz";
-
-if (fullName) {
-	var firstName = fullName.split(' ');
-	for (var i = 0; i < firstName.length; i++) {
-		document.write("<p>-----------</p>");
-		document.write(firstName[i]);
-	}
-}
-
-//-------------------------------------------------------------------
-document.write("<p></p>");
-
-var email = "eduardo.rasgado@gmail.edu.mx";
-
-function emailVerification(email) {
-	var emailArroba = email.split("@");
-	try {
-		var emailPunto = emailArroba[1].split(".");
-	} catch (Exception) {
-		return false;
-	}
-	console.log(emailPunto);
-
-	var existeDominio = false;
-	var existeExtension = false;
-
-	if (emailPunto[0] == "hotmail" || emailPunto[0] == "gmail" || emailPunto[0] == "yahoo" || emailPunto[0] == "outlook") {
-		existeDominio = true;
-	}
-
-	var extension = emailPunto.pop();
-	if (extension == "com" || extension == "edu" || extension == "mx" || extension == "es") {
-		existeExtension = true;
-	}
-
-	return existeDominio && existeExtension && true;
-}
-
-var emailVerdadero = emailVerification(email);
-
-if (emailVerdadero == true) {
-	document.write("Si, es un correo válido");
-} else {
-	document.write("NO es un correo valido");
-}
+document.write(squareArrow2(50));
