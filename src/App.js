@@ -10,19 +10,7 @@ live-server public
 
 */
 
-//define una variable jsx que es un parrafo, pero no se exporta solo
-var template = (
-				<div>
-					<h1>Esto es codigo JSX y no html, esto va a cambiar en el background </h1>
-					<p>oye!</p>
-					<input type="submit" value="Clickame"/>
-					<ul>
-						<li>Pruebalo ya</li>
-						<li>Infinidad de posibilidades</li>
-						<li>Muchos colores!</li>
-					</ul>
-				</div>
-			);
+
 
 //string
 var activo = "Estudiante activo del tec";
@@ -32,7 +20,8 @@ var state = {
 	userName: "Eduardo",
 	universidad: "ITISTMO",
 	genero: "Masculino",
-	ciudad: "Oaxaca, Mexico"
+	ciudad: "Oaxaca, Mexico",
+	edad: 24
 }
 
 //variable
@@ -51,8 +40,26 @@ function cityIs(){
 
 function getCity(){
 	//operador ternario
-	return state.ciudad != "" ? cityIs() : "Ciudad Desconocida"
+	return state.ciudad != "" ? cityIs() : <h3>"Ciudad Desconocida"</h3>
 }
+
+//-----------------------CONST Y LET
+
+
+//-------------
+//define una variable jsx que es un parrafo, pero no se exporta solo
+var template = (
+				<div>
+					<h1>Esto es codigo JSX y no html, esto va a cambiar en el background </h1>
+					<p>oye!</p>
+					<input type="submit" value="Clickame"/>
+					<ul>
+						<li>Pruebalo ya</li>
+						<li>Infinidad de posibilidades</li>
+						<li>Muchos colores!</li>
+					</ul>
+				</div>
+			);
 
 var templateTwo = 
 	(
@@ -64,6 +71,7 @@ var templateTwo =
 		<h3>{getUniversity()}</h3>
 		<h3>{state.genero}</h3>
 		{getCity()}
+		{(state.edad && state.edad >= 18) && <h3>Edad: {state.edad}</h3>}
 		<p>Hola! La fecha es: {fecha}</p>
 
 		</div>

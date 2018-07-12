@@ -1,119 +1,91 @@
 "use strict";
 
-//REACT
-//JSX - Javascript XML   -> se parece a html pero ~
+document.write("hello");
 
-/*
-Mantener a babel en escucha:
-babel src/App.js --out-file=public/scripts/App.js --presets=env,react --watch
+document.write("<p></p>");
 
-live-server public
+var nameVar = "Eduardo";
+nameVar = "Rasgado";
+document.write(nameVar);
 
-*/
+document.write("<p></p>");
 
-//define una variable jsx que es un parrafo, pero no se exporta solo
-var template = React.createElement(
-	"div",
-	null,
-	React.createElement(
-		"h1",
-		null,
-		"Esto es codigo JSX y no html, esto va a cambiar en el background "
-	),
-	React.createElement(
-		"p",
-		null,
-		"oye!"
-	),
-	React.createElement("input", { type: "submit", value: "Clickame" }),
-	React.createElement(
-		"ul",
-		null,
-		React.createElement(
-			"li",
-			null,
-			"Pruebalo ya"
-		),
-		React.createElement(
-			"li",
-			null,
-			"Infinidad de posibilidades"
-		),
-		React.createElement(
-			"li",
-			null,
-			"Muchos colores!"
-		)
-	)
-);
+//no podemos repetir la constante pero si renombrarla
+var nameLet = "Lalo";
+nameLet = ":P";
+document.write(nameLet);
 
-//string
-var activo = "Estudiante activo del tec";
+document.write("<p></p>");
 
-//json
-var state = {
-	userName: "Eduardo",
-	universidad: "ITISTMO",
-	genero: "Masculino",
-	ciudad: "Oaxaca, Mexico"
+//no podemos ni renombrarla ni repetirla
+var nameConst = "Frank";
+document.write(nameConst);
 
-	//variable
-};var fecha = Date();
+document.write("<p></p>");
 
-function getUniversity() {
-	//Condicional, si se cumple se asigna lo que va despues de ?, si no, se asigna lo que va
-	//despues de :
-	return state.universidad != "" ? state.universidad : "Universidad Desconocida";
+//desde una funcion VAR------------------------------------------------
+function getPetName() {
+	var petName = "Braulio";
+	return petName;
+}
+var petName = getPetName();
+document.write(petName);
+
+document.write("<p></p>");
+
+//desde una funcion CONST
+function getPetName2() {
+	var petName = "Fide";
+	return petName;
+}
+var petName2 = getPetName2();
+document.write(petName2);
+
+//----------------------------------------------------------------
+
+var fullName = "Eduardo Rasgado Ruiz";
+
+if (fullName) {
+	var firstName = fullName.split(' ');
+	for (var i = 0; i < firstName.length; i++) {
+		document.write("<p>-----------</p>");
+		document.write(firstName[i]);
+	}
 }
 
-function cityIs() {
-	//inline estilo
-	return React.createElement(
-		"h3",
-		{ style: { color: "blue" } },
-		state.ciudad
-	);
+//-------------------------------------------------------------------
+document.write("<p></p>");
+
+var email = "eduardo.rasgado@gmail.edu.mx";
+
+function emailVerification(email) {
+	var emailArroba = email.split("@");
+	try {
+		var emailPunto = emailArroba[1].split(".");
+	} catch (Exception) {
+		return false;
+	}
+	console.log(emailPunto);
+
+	var existeDominio = false;
+	var existeExtension = false;
+
+	if (emailPunto[0] == "hotmail" || emailPunto[0] == "gmail" || emailPunto[0] == "yahoo" || emailPunto[0] == "outlook") {
+		existeDominio = true;
+	}
+
+	var extension = emailPunto.pop();
+	if (extension == "com" || extension == "edu" || extension == "mx" || extension == "es") {
+		existeExtension = true;
+	}
+
+	return existeDominio && existeExtension && true;
 }
 
-function getCity() {
-	//operador ternario
-	return state.ciudad != "" ? cityIs() : "Ciudad Desconocida";
+var emailVerdadero = emailVerification(email);
+
+if (emailVerdadero == true) {
+	document.write("Si, es un correo válido");
+} else {
+	document.write("NO es un correo valido");
 }
-
-var templateTwo = React.createElement(
-	"div",
-	null,
-	React.createElement(
-		"h1",
-		null,
-		"Este template no se puede cargar al mismo tiempo que el template1"
-	),
-	React.createElement(
-		"h3",
-		null,
-		state.userName
-	),
-	React.createElement(
-		"h3",
-		null,
-		getUniversity()
-	),
-	React.createElement(
-		"h3",
-		null,
-		state.genero
-	),
-	getCity(),
-	React.createElement(
-		"p",
-		null,
-		"Hola! La fecha es: ",
-		fecha
-	)
-);
-
-//mandamos a buscar el div con el id = app
-var appRoot = document.getElementById('app');
-
-//objecto de ReactDOM que va a llevar nuestros parrafo al index.html
-ReactDOM.render(templateTwo, appRoot);
