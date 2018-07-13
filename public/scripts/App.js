@@ -148,9 +148,57 @@ var templateTwo = React.createElement(
 		fecha
 	)
 );
+var contador = 0;
+
+var addOne = function addOne() {
+	alert("mas uno");
+};
+
+var substractOne = function substractOne() {
+	alert("menos uno");
+};
+
+var reset = function reset() {
+	alert("reinicio");
+};
+
+var templateThree = React.createElement(
+	"div",
+	{ style: { background: "blue", margin: "200 0 0 200" } },
+	React.createElement(
+		"h1",
+		{ style: { color: "white", fontFamily: "'Playfair Display', serif", fontSize: "6em" } },
+		"Contador: ",
+		contador
+	),
+	React.createElement(
+		"button",
+		{ onClick: addOne,
+			style: { height: 60, width: 120, fontFamily: "'Raleway', sans-serif", fontWeight: 800, fontSize: "1.2em",
+				background: "white", border: "solid white 2px", color: "blue" }
+		},
+		"Aumentar"
+	),
+	React.createElement(
+		"button",
+		{ onClick: substractOne,
+			style: { height: 60, width: 120, fontFamily: "'Raleway', sans-serif", fontWeight: 800, fontSize: "1.2em",
+				background: "white", border: "solid white 2px", color: "blue", marginLeft: 2 }
+		},
+		"Disminuir"
+	),
+	React.createElement(
+		"button",
+		{ onClick: reset,
+			style: { height: 60, width: 120, fontFamily: "'Raleway', sans-serif", fontWeight: 800, fontSize: "1.2em",
+				background: "white", border: "solid white 2px", color: "blue", marginLeft: 2 }
+		},
+		"Reiniciar"
+	)
+);
 
 //mandamos a buscar el div con el id = app
 var appRoot = document.getElementById('app');
 
 //objecto de ReactDOM que va a llevar nuestros parrafo al index.html
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(templateThree, appRoot);

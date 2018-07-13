@@ -86,9 +86,43 @@ const templateTwo =
 
 		</div>
 	);
+let contador = 0
+
+const addOne = () => {
+	alert("mas uno")
+}
+
+const substractOne = () => {
+	alert("menos uno")
+}
+
+const reset = () => {
+	alert("reinicio")
+}
+
+const templateThree = (
+		<div style={{background:"blue", margin:"200 0 0 200"}}>
+			<h1 style={{color:"white", fontFamily:"'Playfair Display', serif", fontSize:"6em"}}>Contador: {contador}</h1>
+			<button onClick={addOne}
+					style={{height:60, width:120, fontFamily:"'Raleway', sans-serif", fontWeight:800, fontSize:"1.2em",
+							background:"white", border:"solid white 2px", color: "blue"}}
+							>Aumentar</button>
+
+			<button onClick={substractOne}
+					style={{height:60, width:120, fontFamily:"'Raleway', sans-serif", fontWeight:800, fontSize:"1.2em",
+							background:"white", border:"solid white 2px", color: "blue", marginLeft:2}}
+							>Disminuir</button>
+
+			<button onClick={reset}
+					style={{height:60, width:120, fontFamily:"'Raleway', sans-serif", fontWeight:800, fontSize:"1.2em",
+							background:"white", border:"solid white 2px", color: "blue", marginLeft:2}}
+							>Reiniciar</button>
+
+		</div>
+	)
 
 //mandamos a buscar el div con el id = app
 const appRoot = document.getElementById('app')
 
 //objecto de ReactDOM que va a llevar nuestros parrafo al index.html
-ReactDOM.render(templateTwo, appRoot)
+ReactDOM.render(templateThree, appRoot)
