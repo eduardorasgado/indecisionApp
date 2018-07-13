@@ -44,7 +44,13 @@ function getCity(){
 }
 
 //-----------------------
-
+const multiJSON = {
+	multiplo: 3,
+	multiplicados:[1,2,3,4,5,6,7,8],
+	timesFunction(){
+		return this.multiplicados.map((number) => <li>{number * this.multiplo}</li>)
+	}
+}
 //-------------
 //define una variable jsx que es un parrafo, pero no se exporta solo
 const template = (
@@ -63,14 +69,19 @@ const template = (
 const templateTwo = 
 	(
 		<div>
-		{/*acakocnapskca*/}
+		{/*Esto es un comentario*/}
 		<h1>Este template no se puede cargar al mismo 
 			tiempo que el template1</h1>
-		<h3>{state.userName}</h3>
-		<h3>{getUniversity()}</h3>
-		<h3>{state.genero}</h3>
+		<ul>
+		<li>{state.userName}</li>
+		<li>{getUniversity()}</li>
+		<li>{state.genero}</li>
+		{multiJSON.timesFunction()}
+		<li>{(state.edad && state.edad >= 18) && <h3>Edad: {state.edad}</h3>}</li>
+		</ul>
+		
 		{getCity()}
-		{(state.edad && state.edad >= 18) && <h3>Edad: {state.edad}</h3>}
+		
 		<p>Hola! La fecha es: {fecha}</p>
 
 		</div>

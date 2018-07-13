@@ -1,74 +1,156 @@
 "use strict";
 
-//arrow functions con 2 entradas
+//REACT
+//JSX - Javascript XML   -> se parece a html pero ~
 
-var add = function add(a, b) {
-	return a + b;
-};
+/*
+Mantener a babel en escucha:
+babel src/App.js --out-file=public/scripts/App.js --presets=env,react --watch
 
-document.write(add(4, 8));
+live-server public
 
-document.write("<p></p>");
-//----------------------------------------------------
+*/
 
-var addArrow = function addArrow(a, b) {
-	return a + b;
-};
+//string
+var activo = "Estudiante activo del tec";
 
-document.write(addArrow(4, 9));
+//json
+var state = {
+	userName: "Eduardo",
+	universidad: "ITISTMO",
+	genero: "Masculino",
+	ciudad: "Oaxaca, Mexico",
+	edad: 24
 
-document.write("<p></p>");
-//----------------------------------------------------
+	//variable
+};var fecha = Date();
 
-var user = {
-	name: 'Lalo',
-	cities: ['New York', 'CDMX', 'Paris', 'Juchitan', 'Copenhagen'],
-	printPlacesLived: function printPlacesLived() {
-		this.cities.forEach(function (city) {
-			document.write("<p></p>");
-			document.write(this.name + 'ha estado en ' + city);
-		}.bind(this));
-	},
-	happy: true
-};
+function getUniversity() {
+	//Condicional, si se cumple se asigna lo que va despues de ?, si no, se asigna lo que va
+	//despues de :
+	return state.universidad != "" ? state.universidad : "Universidad Desconocida";
+}
 
-user.printPlacesLived();
-document.write("<p>----------------------</p>");
+function cityIs() {
+	//inline estilo
+	return React.createElement(
+		"h3",
+		{ style: { color: "blue" } },
+		state.ciudad
+	);
+}
 
-//----------------------------------------------------
+function getCity() {
+	//operador ternario
+	return state.ciudad != "" ? cityIs() : React.createElement(
+		"h3",
+		null,
+		"\"Ciudad Desconocida\""
+	);
+}
 
-var user2 = {
-	name: 'Francisco',
-	cities: ['New York', 'CDMX', 'Paris', 'Juchitan', 'Copenhagen'],
-	printPlacesLived2: function printPlacesLived2() {
+//-----------------------
+var multiJSON = {
+	multiplo: 3,
+	multiplicados: [1, 2, 3, 4, 5, 6, 7, 8],
+	timesFunction: function timesFunction() {
 		var _this = this;
 
-		this.cities.forEach(function (city) {
-			document.write("<p></p>");
-			document.write(_this.name + 'ha estado en ' + city);
+		return this.multiplicados.map(function (number) {
+			return React.createElement(
+				"li",
+				null,
+				number * _this.multiplo
+			);
 		});
-	},
-
-	happy: true
+	}
 };
+//-------------
+//define una variable jsx que es un parrafo, pero no se exporta solo
+var template = React.createElement(
+	"div",
+	null,
+	React.createElement(
+		"h1",
+		null,
+		"Esto es codigo JSX y no html, esto va a cambiar en el background "
+	),
+	React.createElement(
+		"p",
+		null,
+		"oye!"
+	),
+	React.createElement("input", { type: "submit", value: "Clickame" }),
+	React.createElement(
+		"ul",
+		null,
+		React.createElement(
+			"li",
+			null,
+			"Pruebalo ya"
+		),
+		React.createElement(
+			"li",
+			null,
+			"Infinidad de posibilidades"
+		),
+		React.createElement(
+			"li",
+			null,
+			"Muchos colores!"
+		)
+	)
+);
 
-user2.printPlacesLived2();
+var templateTwo = React.createElement(
+	"div",
+	null,
+	React.createElement(
+		"h1",
+		null,
+		"Este template no se puede cargar al mismo tiempo que el template1"
+	),
+	React.createElement(
+		"ul",
+		null,
+		React.createElement(
+			"li",
+			null,
+			state.userName
+		),
+		React.createElement(
+			"li",
+			null,
+			getUniversity()
+		),
+		React.createElement(
+			"li",
+			null,
+			state.genero
+		),
+		multiJSON.timesFunction(),
+		React.createElement(
+			"li",
+			null,
+			state.edad && state.edad >= 18 && React.createElement(
+				"h3",
+				null,
+				"Edad: ",
+				state.edad
+			)
+		)
+	),
+	getCity(),
+	React.createElement(
+		"p",
+		null,
+		"Hola! La fecha es: ",
+		fecha
+	)
+);
 
-document.write("<p>----------------------</p>");
+//mandamos a buscar el div con el id = app
+var appRoot = document.getElementById('app');
 
-//----------------------------------------------------
-
-var user3 = {
-	name: 'Francisco',
-	cities: ['New York', 'CDMX', 'Paris', 'Juchitan', 'Copenhagen'],
-	printPlacesLived3: function printPlacesLived3() {
-		var cityMessages = this.cities.map(function (city) {
-			return city;
-		});
-		return cityMessages;
-	},
-
-	happy: true
-};
-
-document.write(user3.printPlacesLived3());
+//objecto de ReactDOM que va a llevar nuestros parrafo al index.html
+ReactDOM.render(templateTwo, appRoot);
